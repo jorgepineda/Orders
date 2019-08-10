@@ -82,4 +82,12 @@ public class Order {
     public void setValidForDays(int validForDays) {
         this.validForDays = validForDays;
     }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
+    }
 }
