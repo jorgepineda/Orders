@@ -1,27 +1,12 @@
 package com.worldpay.screeningtest.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
-
-import javax.persistence.*;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "ORDERS")
-public class Order {
-
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
-
+public class OrderCreationRequest {
     private String description;
 
-    private double price;
+    private Double price;
 
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate validFrom;
 
     private Integer validForYears;
@@ -29,18 +14,6 @@ public class Order {
     private Integer validForMonths;
 
     private Integer validForDays;
-
-    @Enumerated(EnumType.STRING)
-    private OrderStatus status;
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getDescription() {
         return description;
@@ -50,11 +23,11 @@ public class Order {
         this.description = description;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -88,13 +61,5 @@ public class Order {
 
     public void setValidForDays(Integer validForDays) {
         this.validForDays = validForDays;
-    }
-
-    public OrderStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(OrderStatus status) {
-        this.status = status;
     }
 }
